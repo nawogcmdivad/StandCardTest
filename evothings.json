@@ -1,0 +1,14 @@
+{
+  "uuid": "b1ce2ede-77fb-48ce-881c-99457c4d52c0",
+  "plugins": [],
+  "libraries": [],
+  "name": "app",
+  "title": "Standcard Tester Bluetooth",
+  "description": "Connect to + Test Standcards",
+  "long-description": "App long description.",
+  "version": "1.0.0",
+  "author-name": "DaveMcGowan",
+  "author-email": "d_mc_g@yaho.com",
+  "author-url": "https://evothings.com",
+  "cordova-id": "com.evothings.samples.app"
+}
