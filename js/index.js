@@ -1,8 +1,15 @@
 /* jshint quotmark: false, unused: vars, browser: true */
 /* global cordova, console, $, bluetoothSerial, _, refreshButton, deviceList, previewColor, red, green, blue, disconnectButton, connectionScreen, colorScreen, rgbText, messageDiv */
 'use strict';
-
 var app = {
+	bluetoothSerial.register(function(buf) {
+      //buf.input is the data that was received via bluetoothSerial.write
+      //buf.output is data that will be transmitted via a bluetoothSerial.read or subscribe
+      //Do processing here
+      buf.input = ""
+	});
+
+	
     initialize: function() {
         this.bind();
     },
