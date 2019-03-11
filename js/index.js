@@ -1,8 +1,8 @@
 /* jshint quotmark: false, unused: vars, browser: true */
 /* global cordova, console, $, bluetoothSerial, _, refreshButton, deviceList, previewColor, red, green, blue, disconnectButton, connectionScreen, colorScreen, rgbText, messageDiv */
 'use strict';
+
 var app = {
-	
     initialize: function() {
         this.bind();
     },
