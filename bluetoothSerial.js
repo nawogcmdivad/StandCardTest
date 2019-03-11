@@ -8,12 +8,12 @@
 
 // Use the 'register' function as follows:
 //
- var bluetoothSerial.register(function(buf) {
-      //buf.input is the data that was received via bluetoothSerial.write
-      //buf.output is data that will be transmitted via a bluetoothSerial.read or subscribe
-      //Do processing here
-      buf.input = ""
-});
+// bluetoothSerial.register(function(buf) {
+//      //buf.input is the data that was received via bluetoothSerial.write
+//      //buf.output is data that will be transmitted via a bluetoothSerial.read or subscribe
+//      //Do processing here
+//      buf.input = ""
+//});
 
 // Function emulates a Bluetooth device echoing back input
 //
