@@ -1,14 +1,31 @@
 {
-  "uuid": "0cedc609-1458-42cb-9f67-df34ad08ccd9",
-  "plugins": [],
-  "libraries": [],
-  "name": "standtest",
-  "title": "StandTest",
-  "description": "App oneline description.",
-  "long-description": "App long description.",
+  "name": "standcardtester",
   "version": "1.0.0",
+  "title": "Standcard Bluetooth Tester",
+  "description": "App to connect to & test standcards",
+  "long-description": "Connects to Tester Standcard via Bluetooth HC-05 module. Sends commands to this card",
+  "tags": [],
+  "libraries": [
+    {
+      "name": "framework7",
+      "version": "1.4.2"
+    },
+    {
+      "name": "jquery",
+      "version": "2.1.1"
+    }
+  ],
+  "index-file": "index.html",
+  "uuid": "4daf3840-4b1c-43f0-ab6b-c5a4dc799538",
+  "icon": "app-icon.png",
+  "cordova-id": "com.evothings.examples.helloworld",
+  "doc-url": "https://evothings.com/2.2/doc/examples/hello-world.html",
+  "plugins": [
+    {
+      "name": "cordova-plugin-bluetooth-serial"
+    }
+  ],
   "author-name": "Evothings",
   "author-email": "build@evothings.com",
-  "author-url": "https://evothings.com",
-  "cordova-id": "com.evothings.samples.StandTest"
+  "author-url": "https://evothings.com"
 }
