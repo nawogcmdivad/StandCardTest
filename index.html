@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-    	<meta charset="utf-8" />
+    	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no
-		initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+		initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
-	<title>Standcard Tester Bluetooth</title>
+	<title>Standcard Bluetooth Tester</title>
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
 	<style>
 		@import 'ui/css/evothings-app.css';
@@ -19,18 +19,16 @@
 		console.log(msg + ": " + url + ":" + line);
 	};
 	</script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name = "format-detection" content = "telephone=no"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="format-detection" content="telephone=no">
         <!--
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;" />
         -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
-
-        <title>Light Control</title>
-        <script src="js/jquery-1.9.1.min.js"></script>
-        <script src="js/jquery.mobile-1.4.5.min.js"></script>
-
-    </head>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+    
+  <link rel="stylesheet" href="libs/framework7/css/framework7.ios.css">
+  <link rel="stylesheet" href="libs/framework7/css/framework7.ios.colors.css">
+</head>
     <body ontouchstart=""><!-- ontouchstart="" enables low-delay CSS transitions. -->
 
 	<header>
@@ -55,14 +53,14 @@
         <div id="colorScreen">
             
             <button class="red wide" onclick="app.reset()">Reset Card</button>
-			
-			<button class="green wide" onclick="app.testLEDs()">Test LEDs</button>
+
+			<button class="blue wide" onclick="app.testLEDs()">Test LEDs</button>
 
             <button class="green wide" onclick="app.release()">Release Lock</button>
             
 			<button class="green wide" onclick="app.buzz()">Sound Buzzer</button>
 
-			<!-- <button class="blue wide" onclick="app.forceScanUUID()">Force Scan UUID</button> -->
+			<button class="blue wide" onclick="app.forceScanUUID()">Force Scan UUID</button>
 			
 			<button class="blue wide" onclick="app.getUUID()">Get UUID</button>
 
@@ -78,17 +76,16 @@
         <script type="text/javascript">
             app.initialize();
 			
-			app.sleep = function(milliseconds) {
-			  var start = new Date().getTime();
-			  for (var i = 0; i < 1e7; i++) {
-				if ((new Date().getTime() - start) > milliseconds){
-				  break;
-				}
-			  }
-			}	
+			function wait(ms)
+			{
+			var d = new Date();
+			var d2 = null;
+			do { d2 = new Date(); }
+			while(d2-d < ms);
+			}
 			
 			app.flushser = function(){
-				//app.sleep(250)
+				//app.wait(200)
 				bluetoothSerial.read();
 				bluetoothSerial.clear();
 			}
@@ -112,32 +109,16 @@
 				app.flushser();
             }
             app.forceScanUUID = function(){
-            	bluetoothSerial.write(":000AF6\n"); <!-- force scan UUID -->
+            	bluetoothSerial.write("::000AF6\n"); <!-- force scan UUID -->
 				app.flushser();
             }
-            app.getUUID = function(){	
-				//window.alert("scanning")
-				//app.setStatus("Scanning UUID")
+            app.getUUID = function(){
 				
-            	bluetoothSerial.write(":000AF6\n"); <!-- force scan UUID -->
-				app.sleep(200)
-				bluetoothSerial.read();
-
-				app.sleep(600) <!-- wait for UUID scan, can be quite long -->
-
 				bluetoothSerial.write(":0001FF\n"); <!-- get UUID -->
-				app.sleep(200)
-				
+
 				bluetoothSerial.read(function (data) {
-				status = data.substr(5,2);
-				UUID = data.substring(7,data.length)
-				if (status == "E0") txt = "NO RF ANT"
-				else if (status == "C0") txt = "NO UUID"
-				else if (status == "D6") txt = "OK"
-				else txt = "?"
-				
-				window.confirm("Status: " + status + " <- " + txt + "\nUUID: " + UUID);
-				});		
+				window.confirm("UUID is: " + data);
+				});								
             }
         </script>
         </div>
